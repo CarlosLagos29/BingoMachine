@@ -75,9 +75,9 @@ const App = () => {
             <h2 className="rounded-full bg-gradient-to-br from-white via-gray-800 to-black px-4 py-6">
                 {
                     currentNumber === null ?
-                        <span className="flex justify-center items-center rounded-full bg-white text-3xl md:text-5xl text-white font-extrabold px-5 py-1" style={{ WebkitTextStroke: '0.5px black' }}> Bingo Machine! </span>
+                        <span className="flex justify-center items-center h-full rounded-full bg-white text-3xl md:text-5xl text-white font-extrabold px-5 py-1" style={{ WebkitTextStroke: '0.5px black' }}> Bingo Machine! </span>
                         :
-                        <span className={`flex justify-center items-center ${currentNumber === 'No more numbers' ? 'rounded-full bg-white text-3xl text-black font-extrabold px-5 py-1' : 'rounded-full bg-white text-5xl'} ${currentNumber?.toString().length == 2 ? 'px-4 py-2 ' : 'px-6 py-2 '}`}>{currentNumber}</span>
+                        <span className={`flex justify-center items-center h-full ${currentNumber === 'No more numbers' ? 'rounded-full bg-white text-3xl text-black font-extrabold px-5 py-1' : 'rounded-full bg-white text-5xl'} ${currentNumber?.toString().length == 2 ? 'px-4 py-2 ' : 'px-6 py-2 '}`}>{currentNumber}</span>
                 }
             </h2>
 
@@ -92,7 +92,7 @@ const App = () => {
                     {
                         toCame.sort((a, b) => a - b).map((n) => (
                             <li className="flex justify-center items-center rounded-full bg-gradient-to-br from-white via-gray-800 to-black px-3 py-5" key={n}>
-                                <span className={`flex justify-center items-center rounded-full bg-white ${n.toString().length === 2 ? 'px-3 py-1' : 'px-4 py-1'} text-3xl`}>{n}</span>
+                                <span className={`flex justify-center items-center h-full rounded-full bg-white ${n.toString().length === 2 ? 'px-3 py-1' : 'px-4 py-1'} text-3xl`}>{n}</span>
                             </li>
                         ))
                     }
