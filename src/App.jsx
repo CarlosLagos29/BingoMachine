@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import randomizer from "./randomizer";
 
+
 const App = () => {
     const [currentNumber, setCurrentNumber] = useState(null);
     const [toOut, setToOut] = useState(Array.from({ length: 90 }, (_, index) => index + 1));
@@ -38,7 +39,7 @@ const App = () => {
                 sessionStorage.setItem('toCame', JSON.stringify(toCame));
                 setIsDisabled(false);
             } else {
-                setCurrentNumber("No hay más números");
+                setCurrentNumber("No more numbers");
             }
         }, 8000);
 
@@ -51,45 +52,53 @@ const App = () => {
         setCurrentNumber(null);
         setToOut(Array.from({ length: 90 }, (_, index) => index + 1));
         setToCame([]);
+        setIsDisabled(false)
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         const sessionCurrentNumber = sessionStorage.getItem('currentNumber');
-        if(sessionCurrentNumber){
+        if (sessionCurrentNumber) {
             setCurrentNumber(sessionCurrentNumber)
         };
         const sessionTocame = sessionStorage.getItem('toCame');
-        if(sessionTocame){
+        if (sessionTocame) {
             setToCame(JSON.parse(sessionTocame))
         };
         const sessionToOut = sessionStorage.getItem('toOut');
-        if(sessionToOut){
+        if (sessionToOut) {
             setToOut(JSON.parse(sessionToOut))
         };
-    },[]);
-    
+    }, []);
+
     return (
-        <div className="flex flex-col justify-center items-center w-[80%] m-auto gap-y-20 mt-20">
-            <h1 className=" text-start">Bingo Machine</h1>
+        <div className="flex flex-col justify-center items-center w-[90%] m-auto gap-y-20 mt-20 ">
             <h2 className="rounded-full bg-gradient-to-br from-white via-gray-800 to-black px-4 py-6">
-                <span className={`rounded-full bg-white text-4xl ${currentNumber?.toString().length == 2 ? 'px-3 py-2 ' : 'px-5 py-2 '}`}>
-                    {currentNumber === null ? "Bingo!" : currentNumber}
-                </span>
+                {
+                    currentNumber === null ?
+                        <span className="rounded-full bg-white text-5xl text-white font-extrabold px-5 py-1"  style={{ WebkitTextStroke: '0.5px black' }}> Bingo Machine! </span>
+                        :
+
+                        <span className={`${currentNumber === 'No more numbers'? 'rounded-full bg-white text-3xl text-black font-extrabold px-5 py-1': 'rounded-full bg-white text-5xl'} ${currentNumber?.toString().length == 2 ? 'px-3 py-2 ' : 'px-5 py-2 '}`}>{currentNumber}</span>
+                }
             </h2>
 
-            <button onClick={handleClick} disabled={isDisabled} className=" text-cyan-50 " >Click</button>
-            <button onClick={handleReset} disabled={isDisabled} >Reset</button>
+            <section className=" flex flex-col gap-y-9">
+                <button onClick={handleClick} disabled={isDisabled} className=" text-white text-2xl font-bold " style={{ WebkitTextStroke: '0.5px black' }} >Click to Start</button>
+                <button onClick={handleReset} className=" text-white text-2xl font-bold"style={{ WebkitTextStroke: '0.5px black' }} >Reset</button>
+            </section>
 
-            <h2>Numeros que salieron!</h2>
-            <ul className="flex flex-wrap text-pretty gap-3">
-                {
-                    toCame.map((n) => (
-                        <li className="rounded-full bg-gradient-to-br from-white via-gray-800 to-black px-3 py-5" key={n}>
-                            <span className={`rounded-full bg-white  ${n.toString().length === 2 ? ' px-2 py-1 ' : 'px-4 py-1 '} text-3xl`}>{n}</span>
-                        </li>
-                    ))
-                }
-            </ul>
+            <section className="flex flex-col items-center gap-y-5 h-[53vh]">
+                <h2 className=" text-white text-3xl font-bold " style={{ WebkitTextStroke: '0.5px black' }}> Drawn numbers!</h2>
+                <ul className="flex flex-wrap text-pretty justify-center gap-3 overflow-auto">
+                    {
+                        toCame.sort((a, b) => a - b).map((n) => (
+                            <li className="rounded-full bg-gradient-to-br from-white via-gray-800 to-black px-3 py-5" key={n}>
+                                <span className={`rounded-full bg-white  ${n.toString().length === 2 ? ' px-3 py-2 ' : 'px-4 py-1 '} text-3xl`}>{n}</span>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </section>
         </div>
     );
 };
