@@ -71,34 +71,34 @@ const App = () => {
     }, []);
 
     return (
-        <div className="flex flex-col justify-center items-center w-[90%] m-auto gap-y-20 mt-20">
-            <h2 className="rounded-full bg-gradient-to-br from-white via-gray-800 to-black px-4 py-6">
-                {
-                    currentNumber === null ?
-                        <span className="flex justify-center items-center h-full rounded-full bg-white text-3xl md:text-5xl text-white font-extrabold px-5 py-1" style={{ WebkitTextStroke: '0.5px black' }}> Bingo Machine! </span>
-                        :
-                        <span className={`flex justify-center items-center h-full ${currentNumber === 'No more numbers' ? 'rounded-full bg-white text-3xl text-black font-extrabold px-5 py-1' : 'rounded-full bg-white text-5xl'} ${currentNumber?.toString().length == 2 ? 'px-4 py-2 ' : 'px-6 py-2 '}`}>{currentNumber}</span>
-                }
-            </h2>
+<div className="flex flex-col justify-center items-center w-[90%] m-auto gap-y-20 min-h-screen">
+    <h2 className="rounded-full bg-gradient-to-br from-white via-gray-800 to-black px-4 py-6">
+        {
+            currentNumber === null ?
+                <span className="flex justify-center items-center h-full rounded-full bg-white text-3xl md:text-5xl text-white font-extrabold px-5 py-1" style={{ WebkitTextStroke: '0.5px black' }}> Bingo Machine! </span>
+                :
+                <span className={`flex justify-center items-center h-full ${currentNumber === 'No more numbers' ? 'rounded-full bg-white text-3xl text-black font-extrabold px-5 py-1' : 'rounded-full bg-white text-5xl'} ${currentNumber?.toString().length == 2 ? 'px-4 py-2 ' : 'px-6 py-2 '}`}>{currentNumber}</span>
+        }
+    </h2>
 
-            <section className="flex flex-col gap-y-9">
-                <button onClick={handleClick} disabled={isDisabled} className="text-white text-2xl font-bold" style={{ WebkitTextStroke: '0.5px black' }}>Click to Start</button>
-                <button onClick={handleReset} className="text-white text-2xl font-bold" style={{ WebkitTextStroke: '0.5px black' }}>Reset</button>
-            </section>
+    <section className="flex flex-col gap-y-9">
+        <button onClick={handleClick} disabled={isDisabled} className="text-white text-2xl font-bold" style={{ WebkitTextStroke: '0.5px black' }}>Click to Start</button>
+        <button onClick={handleReset} className="text-white text-2xl font-bold" style={{ WebkitTextStroke: '0.5px black' }}>Reset</button>
+    </section>
 
-            <section className="flex flex-col items-center gap-y-5 h-[53vh] overflow-auto">
-                <h2 className="text-white text-2xl md:text-3xl font-bold" style={{ WebkitTextStroke: '0.5px black' }}>Drawn numbers!</h2>
-                <ul className="flex flex-wrap justify-center gap-3">
-                    {
-                        toCame.sort((a, b) => a - b).map((n) => (
-                            <li className="flex justify-center items-center rounded-full bg-gradient-to-br from-white via-gray-800 to-black px-3 py-5" key={n}>
-                                <span className={`flex justify-center items-center h-full rounded-full bg-white ${n.toString().length === 2 ? 'px-3 py-1' : 'px-4 py-1'} text-3xl`}>{n}</span>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </section>
-        </div>
+    <section className="flex flex-col items-center gap-y-5 h-[53vh] overflow-auto">
+        <h2 className="text-white text-2xl md:text-3xl font-bold" style={{ WebkitTextStroke: '0.5px black' }}>Drawn numbers!</h2>
+        <ul className="flex flex-wrap justify-center gap-3">
+            {
+                toCame.sort((a, b) => a - b).map((n) => (
+                    <li className="flex justify-center items-center rounded-full bg-gradient-to-br from-white via-gray-800 to-black px-3 py-5" key={n}>
+                        <span className={`flex justify-center items-center h-full rounded-full bg-white ${n.toString().length === 2 ? 'px-3 py-1' : 'px-4 py-1'} text-3xl`}>{n}</span>
+                    </li>
+                ))
+            }
+        </ul>
+    </section>
+</div>
     );
 };
 
