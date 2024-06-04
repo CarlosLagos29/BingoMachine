@@ -21,7 +21,7 @@ const App = () => {
             setCurrentNumber(numberToShow);
         }, 100);
 
-        const audio = new Audio('https://res.cloudinary.com/dnnigh3iz/video/upload/v1717185478/Bingo/nloy39hxszb1dzwwxzhl.ogg');
+        const audio = new Audio('https://res.cloudinary.com/dnnigh3iz/video/upload/v1717513931/Bingo/gwefj2w74ppfeilmhoyt.mp3');
         audio.play();
 
         setTimeout(() => {
@@ -41,7 +41,7 @@ const App = () => {
             } else {
                 setCurrentNumber("No more numbers");
             }
-        }, 8000);
+        }, 10000);
 
     };
 
