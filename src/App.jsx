@@ -41,7 +41,7 @@ const App = () => {
             } else {
                 setCurrentNumber("No more numbers");
             }
-        }, 10000);
+        }, 9000);
 
     };
 
@@ -71,7 +71,7 @@ const App = () => {
     }, []);
 
     return (
-        <div className="flex flex-col justify-center items-center w-[90%] m-auto gap-y-20 min-h-screen">
+        <div className="flex flex-col justify-center items-center w-[90%] m-auto gap-y-8 min-h-screen">
             <h2 className="rounded-full bg-gradient-to-br from-white via-gray-800 to-black px-4 py-6">
                 {
                     currentNumber === null ?
