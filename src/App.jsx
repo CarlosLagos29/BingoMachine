@@ -75,9 +75,11 @@ const App = () => {
             <h2 className="rounded-full bg-gradient-to-br from-white via-gray-800 to-black p-6">
                 {
                     currentNumber === null ?
-                        <span className="flex justify-center items-center h-20 w-full rounded-full bg-white text-3xl md:text-5xl text-white font-extrabold px-5 py-1" style={{ WebkitTextStroke: '0.5px black' }}> Bingo Machine! </span>
+                        <p className="flex justify-center items-center h-20 w-full rounded-full bg-white text-3xl md:text-5xl text-white font-extrabold px-5 py-1" style={{ WebkitTextStroke: '0.5px black' }}> Bingo Machine! </p>
                         :
-                        <span className={`flex justify-center items-center h-20 w-full rounded-full ${currentNumber === 'No more numbers' ? 'rounded-full bg-white text-3xl text-black font-extrabold px-5 py-1' : 'rounded-full bg-white text-5xl'} ${currentNumber?.toString().length == 2 ? 'px-4 py-2 ' : 'px-6 py-2 '}`}>{currentNumber}</span>
+                        <p className={`flex justify-center items-center h-20 w-full rounded-full ${currentNumber === 'No more numbers' ? 'rounded-full bg-white text-3xl text-black font-extrabold px-5 py-1' : 'rounded-full bg-white text-5xl'} ${currentNumber?.toString().length == 2 ? 'px-4 py-2 ' : 'px-6 py-2 '}`}>
+                            {currentNumber}
+                        </p>
                 }
             </h2>
 
@@ -92,7 +94,9 @@ const App = () => {
                     {
                         toCame.sort((a, b) => a - b).map((n) => (
                             <li className="flex justify-center items-center rounded-full bg-gradient-to-br from-white via-gray-800 to-black p-5" key={n}>
-                                <span className={`flex justify-center items-center h-14 w-full  rounded-full bg-white ${n.toString().length === 2 ? 'px-3 py-1' : 'px-4 py-1'} text-3xl`}>{n}</span>
+                                <p className={`flex justify-center items-center h-14 w-full  rounded-full bg-white ${n.toString().length === 2 ? 'px-3 py-1' : 'px-4 py-1'} text-3xl`}>
+                                    {n}
+                                </p>
                             </li>
                         ))
                     }
