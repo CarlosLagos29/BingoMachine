@@ -1,3 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-Bangers: "Bangers", sans-serif;
+  --font-LuckiestGuy: "Luckiest Guy", sans-serif;
+}
+
+@utility text-outline {
+  -webkit-text-stroke: 1px black;
+  text-shadow: 0 2px 0 #000;
+}
+
+/* Tailwind 4 ya no pone cursor pointer en los botones por defecto */
+@layer base {
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+}
