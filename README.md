@@ -1,5 +1,7 @@
 # Bingo Machine
 
+[![CI](https://github.com/CarlosLagos29/BingoMachine/actions/workflows/ci.yml/badge.svg)](https://github.com/CarlosLagos29/BingoMachine/actions/workflows/ci.yml)
+
 A 90-ball bingo caller for the browser. Press the button, watch the balls spin while the sound plays, and the drawn number is added to the board.
 
 <p align="center">
